@@ -1,11 +1,17 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from api.InstaLoaderAPI import InstaLoaderAPI
 
-
 def root(request):
-    return HttpResponse("It's alive!")
+    q = request.GET.get('q', None)
+
+    return HttpResponse("It's alive!\n" + q)
 
 
 def downloadPost(request, shortCode):
-    InstaLoaderAPI('instagram').dowloadPostFromShortCode(shortCode)
-    return HttpResponse("Downloading")
+    username = request.GET.get('username', None)
+    password = request.GET.get('password', None)
+
+    instance = InstaLoaderAPI(username, password)
+    instance.dowloadPostFromShortCode(shortCode)
+
+    return HttpResponse("Downloading...")

@@ -3,15 +3,17 @@ from utils.string import handle_url
 
 
 class InstaLoaderAPI:
-    def __init__(self, username):
+    def __init__(self, username = "instagram", password  = None):
         instaloader = Instaloader()
         instaloader.save_metadata = False
         instaloader.download_video_thumbnails = False
         instaloader.post_metadata_txt_pattern = ''
 
-        self.username = username
         self.instaloader = instaloader
-        self.profile = Profile.from_username(instaloader.context, username)
+
+        if (username and password):
+            self.username = username
+            self.instaloader.login(self.username, password)
 
     def dowloadPostFromShortCode(self, shortCode):
         post = Post.from_shortcode(self.instaloader.context, shortCode)
