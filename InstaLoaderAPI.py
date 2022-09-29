@@ -10,7 +10,10 @@ class InstaLoaderAPI:
         self.instaloader = instaloader
         self.profile = Profile.from_username(instaloader.context, username)
 
-    def dowloadPost(self, url):
-        shortCode = handle_url(url)
+    def dowloadPostFromShortCode(self, shortCode):
         post = Post.from_shortcode(self.instaloader.context, shortCode)
         self.instaloader.download_post(post, self.username)
+
+    def dowloadPostFromURL(self, url):
+        shortCode = handle_url(url)
+        self.dowloadPostFromShortCode(shortCode)
