@@ -5,6 +5,9 @@ from utils.string import handle_url
 class InstaLoaderAPI:
     def __init__(self, username):
         instaloader = Instaloader()
+        instaloader.save_metadata = False
+        instaloader.download_video_thumbnails = False
+        instaloader.post_metadata_txt_pattern = ''
 
         self.username = username
         self.instaloader = instaloader

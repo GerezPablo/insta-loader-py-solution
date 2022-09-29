@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from InstaLoaderAPI import InstaLoaderAPI
+from api.InstaLoaderAPI import InstaLoaderAPI
 
 
 def root(request):
