@@ -10,14 +10,14 @@ class InstaLoaderAPI:
         instaloader.post_metadata_txt_pattern = ''
 
         self.instaloader = instaloader
+        self.username = username
 
         if (username and password):
-            self.username = username
             self.instaloader.login(self.username, password)
 
     def dowloadPostFromShortCode(self, shortCode):
         post = Post.from_shortcode(self.instaloader.context, shortCode)
-        self.instaloader.download_post(post, self.username)
+        self.instaloader.download_post(post, f'insta_folder_{self.username}')
 
     def dowloadPostFromURL(self, url):
         shortCode = handle_url(url)
