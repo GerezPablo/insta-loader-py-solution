@@ -11,7 +11,11 @@ def downloadPost(request, shortCode):
     username = request.GET.get('username', None)
     password = request.GET.get('password', None)
 
-    instance = InstaLoaderAPI(username, password)
-    instance.dowloadPostFromShortCode(shortCode)
+    try:
+        instance = InstaLoaderAPI(username, password)
+        instance.dowloadPostFromShortCode(shortCode)
 
-    return HttpResponse("Downloading...")
+        return HttpResponse("Downloading...")
+    except Exception as error:
+        return HttpResponse(f"Se rompió: {error}")
+
