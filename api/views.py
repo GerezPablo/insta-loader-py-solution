@@ -1,10 +1,11 @@
 from django.http import HttpResponse, request
 from api.InstaLoaderAPI import InstaLoaderAPI
 
+
 def root(request):
     q = request.GET.get('q', None)
 
-    return HttpResponse("It's alive!\n" + q)
+    return HttpResponse("It's alive!" + q != None if q else '')
 
 
 def downloadPost(request, shortCode):
@@ -18,4 +19,3 @@ def downloadPost(request, shortCode):
         return HttpResponse("Downloading...")
     except Exception as error:
         return HttpResponse(f"Se rompió: {error}")
-
