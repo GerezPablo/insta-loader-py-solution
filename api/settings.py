@@ -1,13 +1,17 @@
 import os
-from pathlib import Path
+import environ
 
+env = environ.Env()
+env.read_env(env.str('/', '.env'))
+
+DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-SECRET_KEY = 'django-insecure-4c1b4htf_n9cb0m0rr8u+0fu(he*#@8k_3r%p$#&j68)0d9uj3'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
