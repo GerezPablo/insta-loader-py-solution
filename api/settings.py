@@ -6,7 +6,7 @@ ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'))
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 SECRET_KEY = 'django-insecure-4c1b4htf_n9cb0m0rr8u+0fu(he*#@8k_3r%p$#&j68)0d9uj3'
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,7 +45,7 @@ WSGI_APPLICATION = 'api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR + 'db.sqlite3',
     }
 }
 AUTH_PASSWORD_VALIDATORS = [
