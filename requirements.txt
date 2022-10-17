@@ -1,3 +1,4 @@
 django
 instaloader
 django-environ
+gunicorn
