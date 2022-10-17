@@ -5,7 +5,7 @@ from api.InstaLoaderAPI import InstaLoaderAPI
 def root(request):
     q = request.GET.get('q', None)
 
-    return HttpResponse("It's alive!" + q != None if q else '')
+    return HttpResponse(f"It's alive! {q if q != None else ''}")
 
 
 def downloadPost(request, shortCode):
