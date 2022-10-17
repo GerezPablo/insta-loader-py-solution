@@ -1,4 +1,4 @@
-from instaloader import Instaloader, Profile, Post
+from instaloader import Instaloader, Post
 from utils.string import handle_url
 
 

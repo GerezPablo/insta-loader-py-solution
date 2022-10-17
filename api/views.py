@@ -1,4 +1,4 @@
-from django.http import HttpResponse, request
+from django.http import HttpResponse
 from api.InstaLoaderAPI import InstaLoaderAPI
 
 
